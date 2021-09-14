@@ -68,6 +68,17 @@ public final class Main {
           input = input.trim();
           String[] arguments = input.split(" ");
           System.out.println(arguments[0]);
+          MathBot mathBot = new MathBot();
+          double num1 = Double.parseDouble(arguments[1]);
+          double num2 = Double.parseDouble(arguments[2]);
+
+          if (arguments[0].equals("add")) {
+            mathBot.add(num1, num2);
+          }
+          else if (arguments[0].equals("subtract")) {
+            mathBot.subtract(num1, num2);
+          }
+
           // TODO: complete your REPL by adding commands for addition "add" and subtraction
           //  "subtract"
         } catch (Exception e) {
