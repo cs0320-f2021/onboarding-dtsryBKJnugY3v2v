@@ -73,10 +73,10 @@ public final class Main {
           double num2 = Double.parseDouble(arguments[2]);
 
           if (arguments[0].equals("add")) {
-            mathBot.add(num1, num2);
+            System.out.println(mathBot.add(num1, num2));
           }
           else if (arguments[0].equals("subtract")) {
-            mathBot.subtract(num1, num2);
+            System.out.println(mathBot.subtract(num1, num2));
           }
 
           // TODO: complete your REPL by adding commands for addition "add" and subtraction

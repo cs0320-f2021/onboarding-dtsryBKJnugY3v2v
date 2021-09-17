@@ -27,5 +27,12 @@ public class MathBotTest {
     assertEquals(1, output, 0.01);
   }
 
+  @Test
+  public void testZeros() {
+    MathBot mb = new MathBot();
+    double output = mb.add(0, 0);
+    assertEquals(0.0, output, 0.01)
+  }
+
   // TODO: add more unit tests of your own
 }
