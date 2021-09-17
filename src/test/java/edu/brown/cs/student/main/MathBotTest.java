@@ -34,5 +34,12 @@ public class MathBotTest {
     assertEquals(0.0, output, 0.01)
   }
 
+  @Test
+  public void testLargerSubtraction() {
+    MathBot mb = new MathBot();
+    double output = mb.subtract(300303, 100000);
+    assertEquals(200303, output, 0.01);
+  }
+
   // TODO: add more unit tests of your own
 }
