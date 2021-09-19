@@ -80,6 +80,9 @@ public final class Main {
           }
 
           else if (arguments[0].equals("stars")) {
+            //TODO: add exception for invalid/missing filename
+            String file = arguments[1];
+            this.createStarList(file);
 
           }
 
@@ -93,6 +96,17 @@ public final class Main {
       System.out.println("ERROR: Invalid input for REPL");
     }
 
+  }
+
+  private Star<Star> createStarList(String file) {
+    Star<Star> stars = new Star<Star>;
+    BufferedReader br = new BufferedReader(new FileReader(file));
+    String input;
+    while ((input = br.readLine()) != null) {
+      input = input.trim();
+      String[] arguments = input.split(",");
+      stars.add(new Star())
+    }
   }
 
   private static FreeMarkerEngine createEngine() {
