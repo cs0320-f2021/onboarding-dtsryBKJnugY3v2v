@@ -67,7 +67,7 @@ public final class Main {
         try {
           input = input.trim();
           String[] arguments = input.split(" ");
-          System.out.println(arguments[0]);
+
           MathBot mathBot = new MathBot();
           double num1 = Double.parseDouble(arguments[1]);
           double num2 = Double.parseDouble(arguments[2]);
@@ -77,6 +77,10 @@ public final class Main {
           }
           else if (arguments[0].equals("subtract")) {
             System.out.println(mathBot.subtract(num1, num2));
+          }
+
+          else if (arguments[0].equals("stars")) {
+
           }
 
         } catch (Exception e) {
