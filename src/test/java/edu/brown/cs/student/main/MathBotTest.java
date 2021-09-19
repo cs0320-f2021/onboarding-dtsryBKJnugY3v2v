@@ -22,6 +22,8 @@ public class MathBotTest {
     MathBot matherator9001 = new MathBot();
     double output = matherator9001.add(100000, 200303);
     assertEquals(300303, output, 0.01);
+    output = matherator9001.subtract(300303, 100000);
+    assertEquals(200303, output, 0.01);
   }
 
   @Test
@@ -39,10 +41,10 @@ public class MathBotTest {
   }
 
   @Test
-  public void testLargerSubtraction() {
+  public void testNegativeAddition() {
     MathBot mb = new MathBot();
-    double output = mb.subtract(300303, 100000);
-    assertEquals(200303, output, 0.01);
+    double output = mb.add(-100, 50);
+    assertEquals(-50, output, 0.01);
   }
 
   @Test
@@ -57,7 +59,7 @@ public class MathBotTest {
     MathBot mb = new MathBot();
     double output = mb.add(0.01, 0.01);
     assertEquals(0.02, output, 0.001);
-    double output = mb.subtract(0.02, 0.01);
+    output = mb.subtract(0.02, 0.01);
     assertEquals(0.01, output, 0.001);
   }
 }
