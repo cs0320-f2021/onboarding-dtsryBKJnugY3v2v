@@ -2,13 +2,13 @@ package edu.brown.cs.student.main;
 
 public class Star {
 
-  private int _starID;
+  private String _starID;
   private String _name;
-  private double _x;
-  private double _y;
-  private double _z;
+  private String _x;
+  private String _y;
+  private String _z;
 
-  public void Star(int starID, String name, double x, double y, double z) {
+  public Star(String starID, String name, String x, String y, String z) {
     _starID = starID;
     _name = name;
     _x = x;
@@ -17,7 +17,7 @@ public class Star {
   }
 
   public int getID() {
-    return _starID;
+    return Integer.parseInt(_starID);
   }
 
   public String getName() {
@@ -25,14 +25,14 @@ public class Star {
   }
 
   public double getX() {
-    return _x;
+    return Double.parseDouble(_x);
   }
 
   public double getY() {
-    return _y;
+    return Double.parseDouble(_y);
   }
 
   public double getZ() {
-    return _z;
+    return Double.parseDouble(_z);
   }
 }

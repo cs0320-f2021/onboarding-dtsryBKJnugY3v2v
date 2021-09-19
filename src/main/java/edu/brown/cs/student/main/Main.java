@@ -2,10 +2,12 @@ package edu.brown.cs.student.main;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
@@ -74,13 +76,10 @@ public final class Main {
 
           if (arguments[0].equals("add")) {
             System.out.println(mathBot.add(num1, num2));
-          }
-          else if (arguments[0].equals("subtract")) {
+          } else if (arguments[0].equals("subtract")) {
             System.out.println(mathBot.subtract(num1, num2));
-          }
-
-          else if (arguments[0].equals("stars")) {
-            //TODO: add exception for invalid/missing filename
+          } else if (arguments[0].equals("stars")) {
+            //TODO:add exception for invalid/missing filename
             String file = arguments[1];
             this.createStarList(file);
 
@@ -98,15 +97,17 @@ public final class Main {
 
   }
 
-  private Star<Star> createStarList(String file) {
-    Star<Star> stars = new Star<Star>;
+  @SuppressWarnings("checkstyle:WhitespaceAround")
+  private ArrayList<Star> createStarList(String file) {
+    ArrayList<Star> stars = new ArrayList<>();
     BufferedReader br = new BufferedReader(new FileReader(file));
     String input;
     while ((input = br.readLine()) != null) {
       input = input.trim();
       String[] arguments = input.split(",");
-      stars.add(new Star())
+      stars.add(new Star(arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]));
     }
+    return stars;
   }
 
   private static FreeMarkerEngine createEngine() {
