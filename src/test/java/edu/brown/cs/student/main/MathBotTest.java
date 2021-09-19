@@ -41,14 +41,14 @@ public class MathBotTest {
   }
 
   @Test
-  public void testNegativeAddition() {
+  public void testAdditionWithNegatives() {
     MathBot mb = new MathBot();
     double output = mb.add(-100, 50);
     assertEquals(-50, output, 0.01);
   }
 
   @Test
-  public void testNegativeNumbers() {
+  public void testSubtractingLargerNumber() {
     MathBot mb = new MathBot();
     double output = mb.subtract(500, 1000);
     assertEquals(-500, output, 0.01);
