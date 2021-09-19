@@ -79,8 +79,6 @@ public final class Main {
             System.out.println(mathBot.subtract(num1, num2));
           }
 
-          // TODO: complete your REPL by adding commands for addition "add" and subtraction
-          //  "subtract"
         } catch (Exception e) {
           // e.printStackTrace();
           System.out.println("ERROR: We couldn't process your input");

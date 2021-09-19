@@ -6,6 +6,10 @@ import org.junit.Test;
 
 public class MathBotTest {
 
+  /**
+   * TODO: add comments for each test
+   */
+
   @Test
   public void testAddition() {
     MathBot matherator9000 = new MathBot();
@@ -31,7 +35,7 @@ public class MathBotTest {
   public void testZeros() {
     MathBot mb = new MathBot();
     double output = mb.add(0, 0);
-    assertEquals(0.0, output, 0.01)
+    assertEquals(0.0, output, 0.01);
   }
 
   @Test
@@ -41,5 +45,19 @@ public class MathBotTest {
     assertEquals(200303, output, 0.01);
   }
 
-  // TODO: add more unit tests of your own
+  @Test
+  public void testNegativeNumbers() {
+    MathBot mb = new MathBot();
+    double output = mb.subtract(500, 1000);
+    assertEquals(-500, output, 0.01);
+  }
+
+  @Test
+  public void testSmallNumbers() {
+    MathBot mb = new MathBot();
+    double output = mb.add(0.01, 0.01);
+    assertEquals(0.02, output, 0.001);
+    double output = mb.subtract(0.02, 0.01);
+    assertEquals(0.01, output, 0.001);
+  }
 }
