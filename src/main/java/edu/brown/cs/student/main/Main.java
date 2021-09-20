@@ -70,10 +70,7 @@ public final class Main {
         try {
           input = input.trim();
           String[] arguments = input.split(" ");
-
           MathBot mathBot = new MathBot();
-//          double num1 = Double.parseDouble(arguments[1]);
-//          double num2 = Double.parseDouble(arguments[2]);
 
           switch (arguments[0]) {
             case "add":
@@ -87,9 +84,20 @@ public final class Main {
                       Double.parseDouble(arguments[2])));
               break;
             case "stars":
-              //TODO:add exception for invalid/missing filename
+              //TODO:add exception for invalid/missing filename and stars with no name
               String file = arguments[1];
               _stars = this.createStarList(file);
+              break;
+            case "naive_neighbors":
+              if (arguments.length == 5) {
+                int numNeighbors = Integer.parseInt(arguments[1]);
+                double x = Double.parseDouble(arguments[2]);
+                double y = Double.parseDouble(arguments[3]);
+                double z = Double.parseDouble(arguments[4]);
+              } else if (arguments.length == 3) {
+                int numNeighbors = Integer.parseInt(arguments[1]);
+                String starName = arguments[2];
+              }
               break;
             default:
               System.out.println("ERROR: Invalid input for REPL");
