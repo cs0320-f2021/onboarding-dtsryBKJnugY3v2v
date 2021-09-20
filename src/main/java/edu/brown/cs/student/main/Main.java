@@ -94,9 +94,11 @@ public final class Main {
                 double x = Double.parseDouble(arguments[2]);
                 double y = Double.parseDouble(arguments[3]);
                 double z = Double.parseDouble(arguments[4]);
+                NeighborCalculator neighborCalc = new NeighborCalculator(_stars);
               } else if (arguments.length == 3) {
                 int numNeighbors = Integer.parseInt(arguments[1]);
                 String starName = arguments[2];
+                NeighborCalculator neighborCalc = new NeighborCalculator(_stars);
               }
               break;
             default:
