@@ -30,6 +30,7 @@ public final class Main {
 
   // use port 4567 by default when running server
   private static final int DEFAULT_PORT = 4567;
+  private ArrayList<Star> _stars;
 
   /**
    * The initial method called when execution begins.
@@ -88,7 +89,7 @@ public final class Main {
             case "stars":
               //TODO:add exception for invalid/missing filename
               String file = arguments[1];
-              ArrayList<Star> stars = this.createStarList(file);
+              _stars = this.createStarList(file);
               break;
             default:
               System.out.println("ERROR: Invalid input for REPL");
@@ -107,7 +108,7 @@ public final class Main {
   }
 
   private ArrayList<Star> createStarList(String file) {
-    ArrayList<Star> stars = new ArrayList<>();
+    _stars = new ArrayList<>();
     try {
       BufferedReader br = new BufferedReader(new FileReader(file));
       String input;
@@ -115,13 +116,13 @@ public final class Main {
       while ((input = br.readLine()) != null) {
         input = input.trim();
         String[] arguments = input.split(",");
-        stars.add(new Star(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]));
+        _stars.add(new Star(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]));
       }
     } catch (Exception e) {
       //e.printStackTrace();
       System.out.println("ERROR: File not found");
     }
-    return stars;
+    return _stars;
   }
 
   private static FreeMarkerEngine createEngine() {
