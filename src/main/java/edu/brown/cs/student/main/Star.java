@@ -2,22 +2,22 @@ package edu.brown.cs.student.main;
 
 public class Star {
 
-  private String _starID;
+  private int _starID;
   private String _name;
-  private String _x;
-  private String _y;
-  private String _z;
+  private double _x;
+  private double _y;
+  private double _z;
 
   public Star(String starID, String name, String x, String y, String z) {
-    _starID = starID;
+    _starID = Integer.parseInt(starID);
     _name = name;
-    _x = x;
-    _y = y;
-    _z = z;
+    _x = Double.parseDouble(x);
+    _y = Double.parseDouble(y);
+    _z = Double.parseDouble(z);
   }
 
   public int getID() {
-    return Integer.parseInt(_starID);
+    return _starID;
   }
 
   public String getName() {
@@ -25,14 +25,21 @@ public class Star {
   }
 
   public double getX() {
-    return Double.parseDouble(_x);
+    return _x;
   }
 
   public double getY() {
-    return Double.parseDouble(_y);
+    return _y;
   }
 
   public double getZ() {
-    return Double.parseDouble(_z);
+    return _z;
+  }
+
+  public double getDistance(double x2, double y2, double z2) {
+    double distance = 0;
+    distance = Math.sqrt(Math.pow((x2 - _x), 2)
+        + Math.pow((y2 - _y), 2) + Math.pow((z2 - _z), 2));
+    return distance;
   }
 }

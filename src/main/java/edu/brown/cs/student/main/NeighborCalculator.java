@@ -10,12 +10,12 @@ public class NeighborCalculator {
     _stars = stars;
   }
 
-  public ArrayList<Star> nearestGivenName(int k, String name) {
+  public ArrayList<Star> nearest(int k, String name) {
     ArrayList<Star> nearest = new ArrayList<>();
     return nearest;
   }
 
-  public ArrayList<Star> nearestGivenCoords(int k, double x, double y, double z) {
+  public ArrayList<Star> nearest(int k, double x, double y, double z) {
     ArrayList<Star> nearest = new ArrayList<>();
     return nearest;
   }
