@@ -71,41 +71,55 @@ public final class Main {
           String[] arguments = input.split(" ");
 
           MathBot mathBot = new MathBot();
-          double num1 = Double.parseDouble(arguments[1]);
-          double num2 = Double.parseDouble(arguments[2]);
+//          double num1 = Double.parseDouble(arguments[1]);
+//          double num2 = Double.parseDouble(arguments[2]);
 
-          if (arguments[0].equals("add")) {
-            System.out.println(mathBot.add(num1, num2));
-          } else if (arguments[0].equals("subtract")) {
-            System.out.println(mathBot.subtract(num1, num2));
-          } else if (arguments[0].equals("stars")) {
-            //TODO:add exception for invalid/missing filename
-            String file = arguments[1];
-            this.createStarList(file);
-
+          switch (arguments[0]) {
+            case "add":
+              System.out.println(
+                  mathBot.add(Double.parseDouble(arguments[1]),
+                      Double.parseDouble(arguments[2])));
+              break;
+            case "subtract":
+              System.out.println(
+                  mathBot.subtract(Double.parseDouble(arguments[1]),
+                      Double.parseDouble(arguments[2])));
+              break;
+            case "stars":
+              //TODO:add exception for invalid/missing filename
+              String file = arguments[1];
+              ArrayList<Star> stars = this.createStarList(file);
+              break;
+            default:
+              System.out.println("ERROR: Invalid input for REPL");
           }
 
         } catch (Exception e) {
-          // e.printStackTrace();
+          e.printStackTrace();
           System.out.println("ERROR: We couldn't process your input");
         }
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      //e.printStackTrace();
       System.out.println("ERROR: Invalid input for REPL");
     }
 
   }
 
-  @SuppressWarnings("checkstyle:WhitespaceAround")
   private ArrayList<Star> createStarList(String file) {
     ArrayList<Star> stars = new ArrayList<>();
-    BufferedReader br = new BufferedReader(new FileReader(file));
-    String input;
-    while ((input = br.readLine()) != null) {
-      input = input.trim();
-      String[] arguments = input.split(",");
-      stars.add(new Star(arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]));
+    try {
+      BufferedReader br = new BufferedReader(new FileReader(file));
+      String input;
+      br.readLine();
+      while ((input = br.readLine()) != null) {
+        input = input.trim();
+        String[] arguments = input.split(",");
+        stars.add(new Star(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]));
+      }
+    } catch (Exception e) {
+      //e.printStackTrace();
+      System.out.println("ERROR: File not found");
     }
     return stars;
   }
