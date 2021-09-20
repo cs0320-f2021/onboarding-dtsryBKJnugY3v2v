@@ -2,7 +2,6 @@ package edu.brown.cs.student.main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class NeighborCalculator {
 
@@ -15,7 +14,10 @@ public class NeighborCalculator {
   public ArrayList<Star> nearest(int k, String name) {
     Star origin = _stars.get(name);
     ArrayList<Star> nearest = new ArrayList<>();
-    Iterator starIt = _stars.entrySet().iterator();
+    for (java.util.Map.Entry<String, Star> stringStarEntry : _stars.entrySet()) {
+      Star neighbor = (Star) stringStarEntry;
+      double distance = origin.getDistance(neighbor.getX(), neighbor.getY(), neighbor.getZ());
+    }
     return nearest;
   }
 
