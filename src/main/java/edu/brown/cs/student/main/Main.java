@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
@@ -30,7 +31,8 @@ public final class Main {
 
   // use port 4567 by default when running server
   private static final int DEFAULT_PORT = 4567;
-  private ArrayList<Star> _stars;
+  private HashMap<String, Star> _stars;
+  //private HashMap<Star, String> _starsHM;
 
   /**
    * The initial method called when execution begins.
@@ -117,8 +119,8 @@ public final class Main {
 
   }
 
-  private ArrayList<Star> createStarList(String file) {
-    _stars = new ArrayList<>();
+  private HashMap<String, Star> createStarList(String file) {
+    _stars = new HashMap<>();
     try {
       BufferedReader br = new BufferedReader(new FileReader(file));
       String input;
@@ -126,7 +128,8 @@ public final class Main {
       while ((input = br.readLine()) != null) {
         input = input.trim();
         String[] arguments = input.split(",");
-        _stars.add(new Star(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]));
+        _stars.put(arguments[1], new Star(arguments[0], arguments[1],
+            arguments[2], arguments[3], arguments[4]));
       }
     } catch (Exception e) {
       //e.printStackTrace();
