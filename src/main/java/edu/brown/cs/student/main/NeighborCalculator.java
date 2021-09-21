@@ -1,6 +1,5 @@
 package edu.brown.cs.student.main;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,11 +13,12 @@ public class NeighborCalculator {
 
   public ArrayList<Star> nearest(int k, String name) {
     Star origin = _stars.get(name);
+    Star[] starsArray = (Star[]) (_stars.values().toArray());
+    // todo: add Collections.sort(starsArray, new DistanceComparator());
+    // count = 0
+    // while (count < k) {
+    // System.out.println(starsArray[count].getName());
     ArrayList<Star> nearest = new ArrayList<>();
-    for (java.util.Map.Entry<String, Star> stringStarEntry : _stars.entrySet()) { //todo: check the name - shouldn't add the star to the array if it is the origin star
-      Star neighbor = (Star) stringStarEntry;
-      double distance = origin.getDistance(neighbor.getX(), neighbor.getY(), neighbor.getZ());
-    }
     return nearest;
   }
 

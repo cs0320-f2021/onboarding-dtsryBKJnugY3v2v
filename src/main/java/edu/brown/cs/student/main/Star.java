@@ -1,8 +1,6 @@
 package edu.brown.cs.student.main;
 
-import java.util.Comparator;
-
-public class Star implements Comparator<Star>, Comparable<Star> {
+public class Star {
 
   private int _starID;
   private String _name;
@@ -38,14 +36,13 @@ public class Star implements Comparator<Star>, Comparable<Star> {
     return _z;
   }
 
-  public double getDistance(double x2, double y2, double z2) {
+  public double getDistance(Star star) {
+    double x2 = star.getX();
+    double y2 = star.getY();
+    double z2 = star.getZ();
     double distance = 0;
     distance = Math.sqrt(Math.pow((x2 - _x), 2)
         + Math.pow((y2 - _y), 2) + Math.pow((z2 - _z), 2));
     return distance;
   }
-
-  @Override
-
-
 }
