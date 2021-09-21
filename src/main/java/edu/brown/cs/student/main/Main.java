@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,7 +64,7 @@ public final class Main {
       runSparkServer((int) options.valueOf("port"));
     }
 
-    // TODO: Add your REPL here!
+    // todo: Add your REPL here!
     try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
       String input;
       while ((input = br.readLine()) != null) {
@@ -86,7 +85,7 @@ public final class Main {
                       Double.parseDouble(arguments[2])));
               break;
             case "stars":
-              //TODO:add exception for invalid/missing filename and stars with no name
+              //todo:add exception for invalid/missing filename and stars with no name
               String file = arguments[1];
               _stars = this.createStarList(file);
               break;
