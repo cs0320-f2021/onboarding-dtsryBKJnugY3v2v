@@ -96,10 +96,12 @@ public final class Main {
                 double y = Double.parseDouble(arguments[3]);
                 double z = Double.parseDouble(arguments[4]);
                 NeighborCalculator neighborCalc = new NeighborCalculator(_stars);
+                neighborCalc.nearest(numNeighbors, x, y, z);
               } else if (arguments.length == 3) {
                 int numNeighbors = Integer.parseInt(arguments[1]);
                 String starName = arguments[2];
                 NeighborCalculator neighborCalc = new NeighborCalculator(_stars);
+                neighborCalc.nearest(numNeighbors, starName);
               }
               break;
             default:

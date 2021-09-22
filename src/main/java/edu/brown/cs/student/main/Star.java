@@ -7,6 +7,7 @@ public class Star {
   private double _x;
   private double _y;
   private double _z;
+  private double _distance;
 
   public Star(String starID, String name, String x, String y, String z) {
     _starID = Integer.parseInt(starID);
@@ -36,13 +37,12 @@ public class Star {
     return _z;
   }
 
-  public double getDistance(Star star) {
-    double x2 = star.getX();
-    double y2 = star.getY();
-    double z2 = star.getZ();
-    double distance = 0;
-    distance = Math.sqrt(Math.pow((x2 - _x), 2)
+  public int getDistance() {
+    return (int) _distance;
+  }
+
+  public void setDistance(double x2, double y2, double z2) {
+    _distance = Math.sqrt(Math.pow((x2 - _x), 2)
         + Math.pow((y2 - _y), 2) + Math.pow((z2 - _z), 2));
-    return distance;
   }
 }

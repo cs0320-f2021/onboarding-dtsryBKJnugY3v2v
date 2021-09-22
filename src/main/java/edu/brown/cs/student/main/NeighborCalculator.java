@@ -1,7 +1,7 @@
 package edu.brown.cs.student.main;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class NeighborCalculator {
 
@@ -11,19 +11,32 @@ public class NeighborCalculator {
     _stars = stars;
   }
 
-  public ArrayList<Star> nearest(int k, String name) {
+  public void nearest(int k, String name) {
     Star origin = _stars.get(name);
-    Star[] starsArray = (Star[]) (_stars.values().toArray());
-    // todo: add Collections.sort(starsArray, new DistanceComparator());
-    // count = 0
-    // while (count < k) {
-    // System.out.println(starsArray[count].getName());
-    ArrayList<Star> nearest = new ArrayList<>();
-    return nearest;
+    List<Star> starsArray = (List<Star>) (_stars.values());
+    for (Star neighbor : starsArray) {
+      neighbor.setDistance(origin.getX(), origin.getY(), origin.getZ());
+    }
+    starsArray.sort(new DistanceComparator());
+    int count = 0;
+    while (count < k) {
+      if (!starsArray.get(count).equals(origin)) {
+        System.out.println(starsArray.get(count).getName());
+      }
+      count++;
+    }
   }
 
-  public ArrayList<Star> nearest(int k, double x, double y, double z) {
-    ArrayList<Star> nearest = new ArrayList<>();
-    return nearest;
+  public void nearest(int k, double x, double y, double z) {
+    List<Star> starsArray = (List<Star>) (_stars.values());
+    for (Star neighbor : starsArray) {
+      neighbor.setDistance(x, y, z);
+    }
+    starsArray.sort(new DistanceComparator());
+    int count = 0;
+    while (count < k) {
+      System.out.println(starsArray.get(count).getName());
+      count++;
+    }
   }
 }
