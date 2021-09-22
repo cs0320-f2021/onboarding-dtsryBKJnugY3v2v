@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
@@ -31,6 +32,7 @@ public final class Main {
   // use port 4567 by default when running server
   private static final int DEFAULT_PORT = 4567;
   private HashMap<String, Star> _stars;
+  private String _file;
   //private HashMap<Star, String> _starsHM;
 
   /**
@@ -86,20 +88,26 @@ public final class Main {
               break;
             case "stars":
               //todo:add exception for invalid/missing filename and stars with no name
-              String file = arguments[1];
-              _stars = this.createStarList(file);
+              _file = arguments[1];
+              _stars = this.createStarList(_file);
+//              for (Map.Entry<String, Star> stringStarEntry : _stars.entrySet()) {
+//                Star star = stringStarEntry.getValue();
+//                System.out.println(star.getID());
+//              }
               break;
             case "naive_neighbors":
               if (arguments.length == 5) {
                 int numNeighbors = Integer.parseInt(arguments[1]);
+                System.out.println("Read " + numNeighbors + " from " + _file);
                 double x = Double.parseDouble(arguments[2]);
                 double y = Double.parseDouble(arguments[3]);
                 double z = Double.parseDouble(arguments[4]);
                 NeighborCalculator neighborCalc = new NeighborCalculator(_stars);
                 neighborCalc.nearest(numNeighbors, x, y, z);
               } else if (arguments.length == 3) {
+                System.out.println("Read " + _stars.size() + " stars" + " from " + _file);
                 int numNeighbors = Integer.parseInt(arguments[1]);
-                String starName = arguments[2];
+                String starName = arguments[2].replaceAll("^\"+|\"+$", "");
                 NeighborCalculator neighborCalc = new NeighborCalculator(_stars);
                 neighborCalc.nearest(numNeighbors, starName);
               }
@@ -129,6 +137,9 @@ public final class Main {
       while ((input = br.readLine()) != null) {
         input = input.trim();
         String[] arguments = input.split(",");
+        if (arguments[1].length() == 0) {
+          arguments[1] = "Star ID: " + arguments[0];
+        }
         _stars.put(arguments[1], new Star(arguments[0], arguments[1],
             arguments[2], arguments[3], arguments[4]));
       }
