@@ -66,7 +66,6 @@ public final class Main {
       runSparkServer((int) options.valueOf("port"));
     }
 
-    // todo: Add your REPL here!
     try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
       String input;
       while ((input = br.readLine()) != null) {
@@ -87,18 +86,13 @@ public final class Main {
                       Double.parseDouble(arguments[2])));
               break;
             case "stars":
-              //todo:add exception for invalid/missing filename and stars with no name
               _file = arguments[1];
               _stars = this.createStarList(_file);
-//              for (Map.Entry<String, Star> stringStarEntry : _stars.entrySet()) {
-//                Star star = stringStarEntry.getValue();
-//                System.out.println(star.getID());
-//              }
               break;
             case "naive_neighbors":
               if (arguments.length == 5) {
                 int numNeighbors = Integer.parseInt(arguments[1]);
-                System.out.println("Read " + numNeighbors + " from " + _file);
+                System.out.println("Read " + _stars.size() + " from " + _file);
                 double x = Double.parseDouble(arguments[2]);
                 double y = Double.parseDouble(arguments[3]);
                 double z = Double.parseDouble(arguments[4]);
@@ -117,15 +111,12 @@ public final class Main {
           }
 
         } catch (Exception e) {
-          e.printStackTrace();
           System.out.println("ERROR: We couldn't process your input");
         }
       }
     } catch (Exception e) {
-      //e.printStackTrace();
       System.out.println("ERROR: Invalid input for REPL");
     }
-
   }
 
   private HashMap<String, Star> createStarList(String file) {
@@ -144,7 +135,6 @@ public final class Main {
             arguments[2], arguments[3], arguments[4]));
       }
     } catch (Exception e) {
-      //e.printStackTrace();
       System.out.println("ERROR: File not found");
     }
     return _stars;

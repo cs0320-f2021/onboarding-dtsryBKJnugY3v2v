@@ -11,11 +11,7 @@ public class NeighborCalculator {
   public NeighborCalculator(HashMap<String, Star> stars) {
     _stars = stars;
   }
-
   public void nearest(int k, String name) {
-//    System.out.println(_stars.get("Sol"));
-//    System.out.println(name);
-//    Star origin = _stars.get(name);
     Star origin = _stars.get(name);
     List<Star> starsArray = new ArrayList<>(_stars.values());
     for (Star neighbor : starsArray) {
@@ -39,7 +35,7 @@ public class NeighborCalculator {
     starsArray.sort(new DistanceComparator());
     int count = 0;
     while (count < k) {
-      System.out.println(starsArray.get(count).getName());
+      System.out.println(starsArray.get(count).getID());
       count++;
     }
   }
